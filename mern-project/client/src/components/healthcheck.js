@@ -12,7 +12,7 @@ export default function HealthStatus() {
 
   return (
     <div>
-      <h3>API Status</h3>
+      <h3>değişiklik</h3>
       {JSON.stringify(status)}
     </div>
   );
