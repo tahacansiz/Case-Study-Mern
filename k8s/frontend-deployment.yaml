@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: mern-frontend:latest
+        image: tahacansiz/mern-frontend:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
