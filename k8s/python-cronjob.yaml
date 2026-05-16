@@ -1,0 +1,139 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: python-etl-config
+  namespace: mern-app
+data:
+  MONGODB_HOST: "mongodb-svc"
+  MONGODB_PORT: "27017"
+  MONGODB_DATABASE: "mern-db"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: python-etl-secret
+  namespace: mern-app
+type: Opaque
+stringData:
+  MONGODB_USER: "admin"
+  MONGODB_PASSWORD: "admin123456"
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: python-etl
+  namespace: mern-app
+spec:
+  # Her saatin 0. dakikasında çalış (saat başında)
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      template:
+        metadata:
+          labels:
+            app: python-etl
+        spec:
+          serviceAccountName: default
+          restartPolicy: OnFailure
+          containers:
+          - name: python-etl
+            image: mern-python-etl:latest
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: MONGODB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: python-etl-config
+                  key: MONGODB_HOST
+            - name: MONGODB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: python-etl-config
+                  key: MONGODB_PORT
+            - name: MONGODB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: python-etl-config
+                  key: MONGODB_DATABASE
+            - name: MONGODB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: python-etl-secret
+                  key: MONGODB_USER
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: python-etl-secret
+                  key: MONGODB_PASSWORD
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "250m"
+              limits:
+                memory: "1Gi"
+                cpu: "500m"
+            volumeMounts:
+            - name: etl-storage
+              mountPath: /app/data
+          volumes:
+          - name: etl-storage
+            emptyDir: {}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: python-etl-manual
+  namespace: mern-app
+spec:
+  backoffLimit: 3
+  template:
+    metadata:
+      labels:
+        app: python-etl
+    spec:
+      serviceAccountName: default
+      restartPolicy: OnFailure
+      containers:
+      - name: python-etl
+        image: mern-python-etl:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MONGODB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: python-etl-config
+              key: MONGODB_HOST
+        - name: MONGODB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: python-etl-config
+              key: MONGODB_PORT
+        - name: MONGODB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: python-etl-config
+              key: MONGODB_DATABASE
+        - name: MONGODB_USER
+          valueFrom:
+            secretKeyRef:
+              name: python-etl-secret
+              key: MONGODB_USER
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: python-etl-secret
+              key: MONGODB_PASSWORD
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: etl-storage
+          mountPath: /app/data
+      volumes:
+      - name: etl-storage
+        emptyDir: {}
