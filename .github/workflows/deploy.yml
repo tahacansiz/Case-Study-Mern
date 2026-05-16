@@ -23,7 +23,7 @@ jobs:
       # Backend Build
       - name: Build Backend Image
         run: |
-          docker build -t tahacansiz/mern-backend:latest ./server
+          docker build -t tahacansiz/mern-backend:latest ./mern-project/server
 
       # Backend Push
       - name: Push Backend Image
@@ -33,7 +33,7 @@ jobs:
       # Frontend Build
       - name: Build Frontend Image
         run: |
-          docker build -t tahacansiz/mern-frontend:latest ./client
+          docker build -t tahacansiz/mern-frontend:latest ./mern-project/client
 
       # Frontend Push
       - name: Push Frontend Image
