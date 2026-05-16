@@ -7,7 +7,7 @@ on:
 
     paths:
       - 'mern-project/**'
-      - 'k8s/**'
+     
 
 jobs:
   deploy:
