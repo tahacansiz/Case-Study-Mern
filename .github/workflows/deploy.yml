@@ -49,8 +49,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            kubectl rollout restart deployment backend-deployment
-            kubectl rollout restart deployment frontend-deployment
-
-            kubectl rollout status deployment backend-deployment
-            kubectl rollout status deployment frontend-deployment
+            sudo k3s kubectl rollout restart deployment backend -n mern-app
+          
+            sudo k3s kubectl rollout restart deployment frontend -n mern-app
+          
+            sudo k3s kubectl rollout status deployment backend -n mern-app
+          
+            sudo k3s kubectl rollout status deployment frontend -n mern-app
