@@ -42,4 +42,5 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            sudo k3s kubectl apply -f k8s/python-cronjob.yaml
+            sudo k3s kubectl apply -f ~/k8s/python-namespace.yaml
+            sudo k3s kubectl apply -f ~/k8s/python-cronjob.yaml
