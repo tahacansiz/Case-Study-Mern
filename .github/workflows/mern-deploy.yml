@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+    paths:
+      - 'mern-project/**'
+      - 'k8s/**'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -50,9 +54,9 @@ jobs:
 
           script: |
             sudo k3s kubectl rollout restart deployment backend -n mern-app
-          
+
             sudo k3s kubectl rollout restart deployment frontend -n mern-app
-          
+
             sudo k3s kubectl rollout status deployment backend -n mern-app
-          
+
             sudo k3s kubectl rollout status deployment frontend -n mern-app
