@@ -5,8 +5,12 @@ on:
     branches:
       - master
 
-    paths:
+     paths:
       - 'mern-project/**'
+      - 'k8s/backend-deployment.yaml'
+      - 'k8s/frontend-deployment.yaml'
+      - 'k8s/mongodb-deployment.yaml'
+      - 'k8s/ingress.yaml'
      
 
 jobs:
