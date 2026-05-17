@@ -243,13 +243,9 @@ Troubleshooting sürecinde özellikle Memory Pressue kısmında zorlanıldı.  P
 
 <img width="945" height="601" alt="image" src="https://github.com/user-attachments/assets/247308ac-e788-4d4a-87f7-c5cf21e6552a" />
 
-Grafana dashboard servisi Kubernetes cluster’ı içerisinde başarıyla çalıştırılmış ve NodePort üzerinden dış erişime açılmıştır.
-
-<img width="2878" height="1705" alt="image" src="https://github.com/user-attachments/assets/a11331ac-1175-4830-a4c3-38cc978c31f2" />
-
 Monitoring stack deployment sürecinde Prometheus pod’u zaman zaman Running durumuna geçmesine rağmen monitoring bileşenlerinde stabilite problemleri gözlemlenmiştir. Özellikle düşük kaynaklı cloud instance üzerinde bazı monitoring servisleri `Unknown` durumuna geçmiş ve yüksek restart sayıları oluşmuştur.
 
-Bu durum memory pressure ve resource saturation problemleri ile ilişkilendirilmiş; sistem resource analizi sonrasında swap memory yapılandırması uygulanarak monitoring servislerinin daha stabil çalışması sağlanmıştır.
+Bu durum memory pressure ve resource saturation problemleri ile ilişkilendirilmiş; sistem resource analizi sonrasında swap memory yapılandırması uygulanarak monitoring servislerinin daha stabil çalışması sağlanmıştır. Fakat timeout problemleri ve resource yetersizliği nedeniyle Prometheus servisi stabil çalışamamış ve Grafana ile olan monitoring entegrasyonunda bağlantı problemleri gözlemlenmiştir.
 
 <img width="1780" height="319" alt="image" src="https://github.com/user-attachments/assets/27de64f7-e91e-4b9e-a50f-ec71d3f2cda6" />
 
