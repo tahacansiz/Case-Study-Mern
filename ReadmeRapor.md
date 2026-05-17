@@ -239,16 +239,10 @@ Karşılaşılan problemler:
 * Service timeout problemleri
 * Connection reset problemleri
 
-Troubleshooting sürecinde aşağıdaki Linux/Kubernetes araçları kullanılmıştır:
+Troubleshooting sürecinde özellikle Memory Pressue kısmında zorlanıldı. Bazı çözüm yöntemleri:
 
-```bash
-free -h
-top
-kubectl logs
-kubectl describe pod
-kubectl get pods
-kubectl get svc
-```
+<img width="945" height="601" alt="image" src="https://github.com/user-attachments/assets/247308ac-e788-4d4a-87f7-c5cf21e6552a" />
+
 
 Sistem üzerinde swap memory yapılandırması gerçekleştirilmiş ve resource optimizasyonu uygulanmıştır.
 
