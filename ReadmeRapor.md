@@ -228,7 +228,7 @@ Monitoring süreçlerinde aşağıdaki gözlemlenebilirlik bileşenleri incelenm
 
 # Challenges & Troubleshooting
 
-Monitoring stack kurulumu sırasında düşük kaynaklı cloud instance üzerinde çeşitli resource problemleri gözlemlenmiştir.
+Monitoring stack kurulumu sırasında düşük kaynaklı(2gb ram) cloud instance üzerinde çeşitli resource problemleri gözlemlenmiştir.
 
 Karşılaşılan problemler:
 
@@ -239,14 +239,19 @@ Karşılaşılan problemler:
 * Service timeout problemleri
 * Connection reset problemleri
 
-Troubleshooting sürecinde özellikle Memory Pressue kısmında zorlanıldı. Bazı çözüm yöntemleri:
+Troubleshooting sürecinde özellikle Memory Pressue kısmında zorlanıldı.  Problemin çözümü için cloud instance disk kapasitesi 20GB seviyesine çıkarıldı ve ek olarak 4GB swap memory yapılandırması uygulandı. Swap alanı oluşturulduktan sonra monitoring servisleri stabilize edildi ve Prometheus pod’larının sağlıklı şekilde çalıştığı doğrulandı.
 
 <img width="945" height="601" alt="image" src="https://github.com/user-attachments/assets/247308ac-e788-4d4a-87f7-c5cf21e6552a" />
 
+Grafana dashboard servisi Kubernetes cluster’ı içerisinde başarıyla çalıştırılmış ve NodePort üzerinden dış erişime açılmıştır.
 
-Sistem üzerinde swap memory yapılandırması gerçekleştirilmiş ve resource optimizasyonu uygulanmıştır.
+<img width="2878" height="1705" alt="image" src="https://github.com/user-attachments/assets/a11331ac-1175-4830-a4c3-38cc978c31f2" />
 
-Bu süreç sonucunda monitoring stack stabilize edilmiş ve Kubernetes servisleri sağlıklı şekilde çalıştırılmıştır.
+Monitoring stack deployment sürecinde Prometheus pod’u zaman zaman Running durumuna geçmesine rağmen monitoring bileşenlerinde stabilite problemleri gözlemlenmiştir. Özellikle düşük kaynaklı cloud instance üzerinde bazı monitoring servisleri `Unknown` durumuna geçmiş ve yüksek restart sayıları oluşmuştur.
+
+Bu durum memory pressure ve resource saturation problemleri ile ilişkilendirilmiş; sistem resource analizi sonrasında swap memory yapılandırması uygulanarak monitoring servislerinin daha stabil çalışması sağlanmıştır.
+
+<img width="1780" height="319" alt="image" src="https://github.com/user-attachments/assets/27de64f7-e91e-4b9e-a50f-ec71d3f2cda6" />
 
 ---
 
