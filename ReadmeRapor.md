@@ -292,17 +292,44 @@ Bu repository içerisinde aşağıdaki sistem ekran görüntüleri paylaşılmı
 
 * GitHub Actions pipeline success
 * Mern-Project
+  
   <img width="2878" height="1570" alt="image" src="https://github.com/user-attachments/assets/016d22f1-2a0a-498e-8f95-c7839396d263" />
+  
 * Python ETL
+  
   <img width="2877" height="1556" alt="image" src="https://github.com/user-attachments/assets/9a93b5d0-afce-4161-a73b-8f2aa096628d" />
 
 * Kubernetes pod list
+  
+  <img width="2044" height="635" alt="image" src="https://github.com/user-attachments/assets/dc61abd4-7372-4d27-af83-f4b31403eb89" />
+
 * Monitoring namespace
+
+  <img width="1780" height="319" alt="image" src="https://github.com/user-attachments/assets/ec2de972-5943-47b1-aff3-54a6cc2b4384" />
+
 * Grafana dashboard
-* Terraform apply output
+  
+  <img width="2871" height="1611" alt="image" src="https://github.com/user-attachments/assets/1ae5891a-5e20-41c5-a1fc-87a971613cdd" />
+
+* Terraform Apply
+* 
+  <img width="1363" height="484" alt="image" src="https://github.com/user-attachments/assets/6b2ed41c-0c35-4fc5-8474-eaa669e5372b" />
+
+
 * MERN frontend
+  Cloud ortamında Kubernetes üzerinden deploy edilen MERN application görüntüsü. Frontend servisi NodePort üzerinden erişilebilir durumdadır ve     backend `/healthcheck` endpoint’i başarılı şekilde response döndürmektedir.
+
+  Public Access:
+   `http://16.171.39.223:30080`
+  <img width="2879" height="1617" alt="image" src="https://github.com/user-attachments/assets/55a933f2-6289-4efd-b1f7-8c68e26d60a3" />
+
+  
 * Python ETL logs
+  <img width="2856" height="930" alt="image" src="https://github.com/user-attachments/assets/df040b26-cf6d-4c92-a581-8b3738fb7a4b" />
+
 * Resource monitoring outputs
+  <img width="1757" height="165" alt="image" src="https://github.com/user-attachments/assets/2c668e0a-483a-4881-9292-bf3a369c86e2" />
+
 
 ---
 
