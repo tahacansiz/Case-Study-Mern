@@ -343,9 +343,9 @@ Terraform kullanılarak AWS altyapısının provision edildiğini gösteren çı
 
 Cloud ortamında Kubernetes üzerinden deploy edilen MERN application görüntüsü. Frontend servisi NodePort üzerinden erişilebilir durumdadır ve backend `/healthcheck` endpoint’i başarılı şekilde response döndürmektedir.
 
-Public Access:
+Public Access (deployment sırasında kullanılan endpoint):
 
-`http://16.171.39.223:30080`
+http://16.171.39.223:30080
 
 <img width="2879" height="1617" alt="image" src="https://github.com/user-attachments/assets/55a933f2-6289-4efd-b1f7-8c68e26d60a3" />
 
