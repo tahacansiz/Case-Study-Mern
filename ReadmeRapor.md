@@ -203,9 +203,9 @@ Kullanılan Kubernetes secret bileşenleri:
 
 # Monitoring & Observability
 
-Monitoring altyapısı için Prometheus ve Grafana kullanılmıştır.
+Monitoring altyapısı için Prometheus ve Grafana tabanlı bir monitoring stack kurulumu gerçekleştirilmiştir.
 
-Kurulan monitoring bileşenleri:
+Kurulumu gerçekleştirilen monitoring bileşenleri:
 
 * Prometheus Server
 * Alertmanager
@@ -213,17 +213,11 @@ Kurulan monitoring bileşenleri:
 * kube-state-metrics
 * Grafana
 
-Grafana NodePort üzerinden dış erişime açılmıştır.
+Grafana servisi NodePort üzerinden dış erişime açılmıştır.
 
-Monitoring süreçlerinde aşağıdaki gözlemlenebilirlik bileşenleri incelenmiştir:
+Monitoring altyapısı kapsamında Kubernetes pod durumları, resource kullanımı ve servis sağlık kontrollerinin izlenmesine yönelik çalışmalar gerçekleştirilmiştir.
 
-* Pod status
-* Resource usage
-* Memory consumption
-* Service health
-* Kubernetes node metrics
-
----
+Monitoring stack deployment sürecinde özellikle düşük kaynaklı cloud instance ortamında resource saturation ve memory pressure problemleri gözlemlenmiştir. Grafana dashboard erişimi sağlanmış olsa da Prometheus servisinde zaman zaman stabilite problemleri, timeout hataları ve readiness problemleri yaşanmıştır.
 
 # Challenges & Troubleshooting
 
