@@ -1,218 +1,318 @@
-# Kubernetes Kurulumu - MERN Stack + Python ETL
+# Kubernetes Deployment Guide - MERN Stack + Python ETL
 
-Bu klasörde MERN Stack uygulaması ve Python ETL projesinin Kubernetes'te çalışması için gerekli tüm yapılandırma dosyaları yer almaktadır.
+Bu klasörde MERN Stack uygulaması ve Python ETL projesinin Kubernetes ortamında çalıştırılması için gerekli deployment ve orchestration yapılandırmaları yer almaktadır.
 
 ## Dosya Yapısı
 
-- **namespace.yaml**: Kubernetes namespace oluşturma (mern-app)
-- **mongodb-deployment.yaml**: MongoDB StatefulSet, PV, PVC ve Services
-- **backend-deployment.yaml**: Express.js backend deployment, service ve HPA
-- **frontend-deployment.yaml**: React frontend deployment, service ve HPA
-- **python-cronjob.yaml**: Python ETL CronJob (her 1 saatte bir çalışır)
-- **ingress.yaml**: Ingress konfigürasyonu (opsiyonel)
+* **namespace.yaml**: Kubernetes namespace oluşturma (mern-app)
+* **mongodb-deployment.yaml**: MongoDB deployment, persistent storage ve service yapılandırmaları
+* **backend-deployment.yaml**: Express.js backend deployment ve service yapılandırmaları
+* **frontend-deployment.yaml**: React frontend deployment ve service yapılandırmaları
+* **python-cronjob.yaml**: Python ETL CronJob workload yapılandırması
+* **ingress.yaml**: Opsiyonel ingress örnek yapılandırması
 
-## Deploy Adımları
+---
 
-### 1. Namespace Oluştur
+# Deployment Steps
+
+## 1. Namespace Oluşturma
+
 ```bash
 kubectl apply -f namespace.yaml
 ```
 
-### 2. MongoDB'yi Deploy Et
+---
+
+## 2. MongoDB Deployment
+
 ```bash
 kubectl apply -f mongodb-deployment.yaml
 ```
 
-MongoDB'nin hazır olmasını bekle:
+MongoDB pod’unun hazır olduğunu doğrulamak için:
+
 ```bash
 kubectl get pods -n mern-app -w
-# MongoDB pod'u Running durumda olana kadar bekle
 ```
 
-### 3. Backend'i Deploy Et
-Önce Docker imajını oluştur:
+---
+
+## 3. Backend Deployment
+
+Docker image build işlemi:
+
 ```bash
 cd ../mern-project/server
-docker build -t mern-backend:latest .
+
+docker build -t tahacansiz/mern-backend:latest .
+docker push tahacansiz/mern-backend:latest
 ```
 
-Ardından deploy et:
+Deployment işlemi:
+
 ```bash
 kubectl apply -f backend-deployment.yaml
 ```
 
-### 4. Frontend'i Deploy Et
-Önce Docker imajını oluştur:
+---
+
+## 4. Frontend Deployment
+
+Docker image build işlemi:
+
 ```bash
 cd ../mern-project/client
-docker build -t mern-frontend:latest .
+
+docker build -t tahacansiz/mern-frontend:latest .
+docker push tahacansiz/mern-frontend:latest
 ```
 
-Ardından deploy et:
+Deployment işlemi:
+
 ```bash
 kubectl apply -f frontend-deployment.yaml
 ```
 
-### 5. Python ETL CronJob'u Deploy Et
-Önce Docker imajını oluştur:
+---
+
+## 5. Python ETL CronJob Deployment
+
+Docker image build işlemi:
+
 ```bash
 cd ../python-project
-docker build -t mern-python-etl:latest .
+
+docker build -t tahacansiz/python-etl:latest .
+docker push tahacansiz/python-etl:latest
 ```
 
-Ardından deploy et:
+Deployment işlemi:
+
 ```bash
 kubectl apply -f python-cronjob.yaml
 ```
 
-### 6. Ingress Deploy Et (Opsiyonel)
+---
+
+## 6. Ingress Configuration (Optional)
+
+Ingress manifest dosyası örnek yapılandırma amacıyla repository içerisinde tutulmaktadır.
+
 ```bash
 kubectl apply -f ingress.yaml
 ```
 
-## Durumunu Kontrol Et
+---
 
-Tüm pod'ları görüntüle:
+# Kubernetes Resource Verification
+
+## Pod Durumları
+
 ```bash
 kubectl get pods -n mern-app
 ```
 
-Deployments'i kontrol et:
+## Deployments
+
 ```bash
 kubectl get deployments -n mern-app
 ```
 
-StatefulSets'i kontrol et:
-```bash
-kubectl get statefulsets -n mern-app
-```
+## CronJobs
 
-CronJobs'u kontrol et:
 ```bash
 kubectl get cronjobs -n mern-app
 ```
 
-Services'i kontrol et:
+## Services
+
 ```bash
 kubectl get svc -n mern-app
 ```
 
-## Pod Log'larını Kontrol Et
+---
 
-Frontend log'ları:
+# Log Kontrolleri
+
+## Frontend Logs
+
 ```bash
 kubectl logs -n mern-app -l app=frontend -f
 ```
 
-Backend log'ları:
+## Backend Logs
+
 ```bash
 kubectl logs -n mern-app -l app=backend -f
 ```
 
-MongoDB log'ları:
+## MongoDB Logs
+
 ```bash
 kubectl logs -n mern-app -l app=mongodb -f
 ```
 
-Python ETL log'ları:
+## Python ETL Logs
+
 ```bash
 kubectl logs -n mern-app -l app=python-etl -f
 ```
 
-## Port Forward (Yerel Test İçin)
+---
 
-Frontend'e erişim:
+# Port Forward (Local Testing)
+
+## Frontend Access
+
 ```bash
 kubectl port-forward -n mern-app svc/frontend-service 3000:80
-# http://localhost:3000 adresinden erişebilirsin
 ```
 
-Backend'e erişim:
+Frontend erişimi:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Backend Access
+
 ```bash
 kubectl port-forward -n mern-app svc/backend-service 5000:5000
-# http://localhost:5000/api/health adresinden kontrol et
 ```
 
-MongoDB'ye erişim:
+Backend health endpoint:
+
+```text
+http://localhost:5000/api/health
+```
+
+---
+
+## MongoDB Access
+
 ```bash
 kubectl port-forward -n mern-app svc/mongodb-svc 27017:27017
-# mongodb://admin:admin123456@localhost:27017 ile bağlan
 ```
 
-## Ortam Değişkenleri
+MongoDB local connection example:
 
-### Backend
-- PORT: 5000
-- MONGODB_HOST: mongodb-svc
-- MONGODB_PORT: 27017
-- MONGODB_DATABASE: mern-db
-- MONGODB_USER: admin
-- MONGODB_PASSWORD: admin123456
+```text
+mongodb://localhost:27017
+```
 
-### Frontend
-- REACT_APP_API_URL: http://backend-service:5000
+---
 
-### Python ETL
-- MONGODB_HOST: mongodb-svc
-- MONGODB_PORT: 27017
-- MONGODB_DATABASE: mern-db
-- MONGODB_USER: admin
-- MONGODB_PASSWORD: admin123456
+# Environment Configuration
 
-## Skalama
+## Backend Configuration
 
-### Backend'i Manuel Olarak Ölçeklendir
+* PORT
+* MONGODB_HOST
+* MONGODB_PORT
+* MONGODB_DATABASE
+
+## Frontend Configuration
+
+* REACT_APP_API_URL
+
+## Python ETL Configuration
+
+* MONGODB_HOST
+* MONGODB_PORT
+* MONGODB_DATABASE
+
+Sensitive configuration values Kubernetes Secrets kullanılarak yönetilmektedir.
+
+---
+
+# Scaling
+
+## Backend Scaling
+
 ```bash
 kubectl scale deployment/backend --replicas=3 -n mern-app
 ```
 
-### Frontend'i Manuel Olarak Ölçeklendir
+## Frontend Scaling
+
 ```bash
 kubectl scale deployment/frontend --replicas=3 -n mern-app
 ```
 
-HPA (Horizontal Pod Autoscaler) otomatik olarak CPU ve bellek kullanımına göre ölçeklendir.
+Horizontal scaling yapılandırmaları deployment manifestleri içerisinde tanımlanmıştır.
 
-## Temizlik
+---
 
-Tüm kaynakları sil:
+# Cleanup
+
+Tüm namespace ve Kubernetes kaynaklarını silmek için:
+
 ```bash
 kubectl delete namespace mern-app
 ```
 
-## Sorun Giderme
+---
 
-### Pod'un başlatılmadığını görmek
+# Troubleshooting
+
+## Pod Detaylarını Görüntüleme
+
 ```bash
 kubectl describe pod <pod-name> -n mern-app
 ```
 
-### MongoDB bağlantı hatası
-- MongoDB pod'unun Running durumda olduğundan emin ol
-- Secret bilgilerinin doğru olduğunu kontrol et
-- Networkünü kontrol et: `kubectl get svc -n mern-app`
+---
 
-### CronJob çalışmıyor
+## MongoDB Connection Issues
+
+Kontrol edilmesi gerekenler:
+
+* MongoDB pod status
+* Kubernetes service durumu
+* Secret configuration
+* Network connectivity
+
+Kontrol komutları:
+
 ```bash
-# CronJob durumunu kontrol et
-kubectl get cronjob python-etl -n mern-app
-
-# Son Job'ları görmek için
-kubectl get jobs -n mern-app -l app=python-etl
+kubectl get svc -n mern-app
+kubectl get pods -n mern-app
 ```
 
-### Manuel Test Et
+---
+
+## CronJob Troubleshooting
+
+CronJob durumunu kontrol etme:
+
 ```bash
-# Python ETL job'unu manuel olarak çalıştır
+kubectl get cronjob python-etl -n mern-app
+```
+
+Job geçmişini görüntüleme:
+
+```bash
+kubectl get jobs -n mern-app
+```
+
+---
+
+## Manual ETL Test
+
+```bash
 kubectl apply -f python-cronjob.yaml
 kubectl get jobs -n mern-app
-kubectl logs -n mern-app job/python-etl-manual
 ```
 
-## Notlar
+---
 
-- MongoDB için persistent storage kullanılmaktadır
-- Backend ve Frontend otomatik ölçekleme özelliğine sahiptir
-- Python ETL her saatin başında (0. dakikada) çalışır
-- Tüm uygulamalar resource requests ve limits ayarlarına sahiptir
-- Liveness ve readiness probes konfigüre edilmiştir
+# Notes
+
+* MongoDB deployment persistent storage kullanmaktadır
+* Kubernetes ConfigMaps ve Secrets aktif olarak kullanılmaktadır
+* Python ETL workload’u Kubernetes CronJob yapısı ile çalışmaktadır
+* Monitoring süreçleri Prometheus ve Grafana ile desteklenmiştir
+* Deployment süreçleri GitHub Actions CI/CD pipeline ile otomatikleştirilmiştir
+* Kubernetes resource management süreçlerinde resource requests ve limits yapılandırmaları kullanılmıştır
