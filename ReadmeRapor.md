@@ -71,7 +71,9 @@ Python tabanlı ETL servisi Kubernetes CronJob yapısı ile belirli zaman aralı
 
 CI/CD süreçleri GitHub Actions üzerinden yönetilmektedir. Pipeline süreci Docker image build işlemleri, Docker Hub registry push operasyonları ve Kubernetes deployment güncellemelerini otomatik olarak gerçekleştirmektedir. Ayrıca path filtering yaklaşımı kullanılarak farklı workload’lar için bağımsız deployment süreçleri yönetilmiştir.
 
-Infrastructure provisioning süreçleri Terraform ile yönetilmiş; AWS EC2 instance ve security group yapılandırmaları Infrastructure as Code yaklaşımıyla oluşturulmuştur. Bu yaklaşım sayesinde altyapı kaynaklarının tekrar üretilebilir ve yönetilebilir olması sağlanmıştır.
+Infrastructure provisioning süreçlerinde Terraform kullanılarak AWS üzerinde temel cloud kaynakları oluşturulmuştur. EC2 instance ve security group yapılandırmaları Infrastructure as Code yaklaşımıyla provision edilmiş; Kubernetes cluster kurulumu ve uygulama deployment süreçleri cloud ortamında yönetilmiştir.
+
+Bu yaklaşım sayesinde altyapı kaynaklarının daha yönetilebilir ve tekrar üretilebilir şekilde yapılandırılması amaçlanmıştır.
 
 Monitoring ve observability ihtiyaçları için Prometheus ve Grafana cluster içerisine entegre edilmiştir. Sistem kaynakları, Kubernetes pod durumları ve servis sağlık kontrolleri monitoring altyapısı üzerinden izlenebilir hale getirilmiştir.
 
