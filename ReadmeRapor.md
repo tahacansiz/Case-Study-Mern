@@ -239,7 +239,7 @@ Karşılaşılan problemler:
 * Service timeout problemleri
 * Connection reset problemleri
 
-Troubleshooting sürecinde özellikle Memory Pressue kısmında zorlanıldı.  Problemin çözümü için cloud instance disk kapasitesi 20GB seviyesine çıkarıldı ve ek olarak 4GB swap memory yapılandırması uygulandı. Swap alanı oluşturulduktan sonra monitoring servisleri stabilize edildi ve Prometheus pod’larının sağlıklı şekilde çalıştığı doğrulandı.
+Troubleshooting sürecinde özellikle Memory Pressure kısmında zorlanıldı. Problemin çözümü için cloud instance disk kapasitesi 20GB seviyesine çıkarıldı ve ek olarak 4GB swap memory yapılandırması uygulandı. Swap alanı oluşturulduktan sonra Kubernetes node üzerindeki resource kullanımı optimize edilmiş ve sistem servislerinin daha stabil çalışması sağlanmıştır.
 
 <img width="945" height="601" alt="image" src="https://github.com/user-attachments/assets/247308ac-e788-4d4a-87f7-c5cf21e6552a" />
 
