@@ -288,64 +288,115 @@ terraform apply
 
 # Screenshots
 
-Bu repository içerisinde aşağıdaki sistem ekran görüntüleri paylaşılmıştır:
+Bu repository içerisinde sistemin cloud ortamında çalıştığını, Kubernetes workload’larının başarılı şekilde deploy edildiğini ve CI/CD süreçlerinin doğrulandığını gösteren ekran görüntüleri paylaşılmıştır.
 
-* GitHub Actions pipeline success
-* Mern-Project
-  
-  <img width="2878" height="1570" alt="image" src="https://github.com/user-attachments/assets/016d22f1-2a0a-498e-8f95-c7839396d263" />
-  
-* Python ETL
-  
-  <img width="2877" height="1556" alt="image" src="https://github.com/user-attachments/assets/9a93b5d0-afce-4161-a73b-8f2aa096628d" />
+---
 
-* Kubernetes pod list
-  
-  <img width="2044" height="635" alt="image" src="https://github.com/user-attachments/assets/dc61abd4-7372-4d27-af83-f4b31403eb89" />
+## GitHub Actions Pipeline Success
 
-* Monitoring namespace
+MERN application deployment pipeline çıktısı.
 
-  <img width="1780" height="319" alt="image" src="https://github.com/user-attachments/assets/ec2de972-5943-47b1-aff3-54a6cc2b4384" />
+<img width="2878" height="1570" alt="image" src="https://github.com/user-attachments/assets/016d22f1-2a0a-498e-8f95-c7839396d263" />
 
-* Grafana dashboard
-  
-  <img width="2871" height="1611" alt="image" src="https://github.com/user-attachments/assets/1ae5891a-5e20-41c5-a1fc-87a971613cdd" />
+---
 
-* Terraform Apply
-* 
-  <img width="1363" height="484" alt="image" src="https://github.com/user-attachments/assets/6b2ed41c-0c35-4fc5-8474-eaa669e5372b" />
+## Python ETL Pipeline
 
+Python ETL workload pipeline çıktısı.
 
-* MERN frontend
-  Cloud ortamında Kubernetes üzerinden deploy edilen MERN application görüntüsü. Frontend servisi NodePort üzerinden erişilebilir durumdadır ve     backend `/healthcheck` endpoint’i başarılı şekilde response döndürmektedir.
+<img width="2877" height="1556" alt="image" src="https://github.com/user-attachments/assets/9a93b5d0-afce-4161-a73b-8f2aa096628d" />
 
-  Public Access:
-   `http://16.171.39.223:30080`
-  <img width="2879" height="1617" alt="image" src="https://github.com/user-attachments/assets/55a933f2-6289-4efd-b1f7-8c68e26d60a3" />
-  
-  */create
+---
+
+## Kubernetes Pod List
+
+Kubernetes cluster içerisinde çalışan workload’ların görüntüsü.
+
+<img width="2044" height="635" alt="image" src="https://github.com/user-attachments/assets/dc61abd4-7372-4d27-af83-f4b31403eb89" />
+
+---
+
+## Monitoring Namespace
+
+Monitoring namespace altında çalışan monitoring servisleri.
+
+<img width="1780" height="319" alt="image" src="https://github.com/user-attachments/assets/ec2de972-5943-47b1-aff3-54a6cc2b4384" />
+
+---
+
+## Grafana Dashboard
+
+Grafana monitoring dashboard erişimi.
+
+<img width="2871" height="1611" alt="image" src="https://github.com/user-attachments/assets/1ae5891a-5e20-41c5-a1fc-87a971613cdd" />
+
+---
+
+## Terraform Apply Output
+
+Terraform kullanılarak AWS altyapısının provision edildiğini gösteren çıktı.
+
+<img width="1363" height="484" alt="image" src="https://github.com/user-attachments/assets/6b2ed41c-0c35-4fc5-8474-eaa669e5372b" />
+
+---
+
+## MERN Application Running on Kubernetes
+
+Cloud ortamında Kubernetes üzerinden deploy edilen MERN application görüntüsü. Frontend servisi NodePort üzerinden erişilebilir durumdadır ve backend `/healthcheck` endpoint’i başarılı şekilde response döndürmektedir.
+
+Public Access:
+
+`http://16.171.39.223:30080`
+
+<img width="2879" height="1617" alt="image" src="https://github.com/user-attachments/assets/55a933f2-6289-4efd-b1f7-8c68e26d60a3" />
+
+---
+
+## Create Record Page
+
+Frontend üzerinden yeni kayıt oluşturma ekranı.
+
 <img width="2879" height="1717" alt="image" src="https://github.com/user-attachments/assets/1c1e93f7-ed51-4022-aea5-94cb3e304b3a" />
-  /records
-  <img width="2869" height="1610" alt="image" src="https://github.com/user-attachments/assets/d9d614eb-3cd4-49e0-9181-a46d1f5c1122" />
 
-  */edit
-  <img width="2872" height="1718" alt="image" src="https://github.com/user-attachments/assets/87c08100-a362-4adf-9cd0-1e2134badfba" />
-*/delete
-  <img width="2879" height="1623" alt="image" src="https://github.com/user-attachments/assets/7116e204-a449-4541-abac-db5e37c078c6" />
+---
 
-  
-  
+## Record List Page
 
+MongoDB üzerinde tutulan kayıtların frontend arayüzünde listelendiği ekran.
 
+<img width="2869" height="1610" alt="image" src="https://github.com/user-attachments/assets/d9d614eb-3cd4-49e0-9181-a46d1f5c1122" />
 
+---
 
-  
-* Python ETL logs
-  <img width="2856" height="930" alt="image" src="https://github.com/user-attachments/assets/df040b26-cf6d-4c92-a581-8b3738fb7a4b" />
+## Edit Record Page
 
-* Resource monitoring outputs
-  <img width="1757" height="165" alt="image" src="https://github.com/user-attachments/assets/2c668e0a-483a-4881-9292-bf3a369c86e2" />
+Frontend üzerinden kayıt güncelleme işlemi.
 
+<img width="2872" height="1718" alt="image" src="https://github.com/user-attachments/assets/87c08100-a362-4adf-9cd0-1e2134badfba" />
+
+---
+
+## Delete Record Action
+
+Frontend üzerinden kayıt silme işlemi.
+
+<img width="2879" height="1623" alt="image" src="https://github.com/user-attachments/assets/7116e204-a449-4541-abac-db5e37c078c6" />
+
+---
+
+## Python ETL Logs
+
+Kubernetes CronJob yapısı ile çalışan Python ETL workload’unun başarılı execution çıktısı.
+
+<img width="2856" height="930" alt="image" src="https://github.com/user-attachments/assets/df040b26-cf6d-4c92-a581-8b3738fb7a4b" />
+
+---
+
+## Resource Monitoring Outputs
+
+Memory pressure ve resource saturation problemlerinin analiz edilmesi amacıyla kullanılan sistem resource çıktıları.
+
+<img width="1757" height="165" alt="image" src="https://github.com/user-attachments/assets/2c668e0a-483a-4881-9292-bf3a369c86e2" />
 
 ---
 
