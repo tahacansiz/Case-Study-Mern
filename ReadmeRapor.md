@@ -1,4 +1,3 @@
-<img width="2879" height="1717" alt="image" src="https://github.com/user-attachments/assets/b2098026-aced-43f5-959d-106f61b765d9" /># DevOps / SRE Case Study
 
 ## Project Overview
 
