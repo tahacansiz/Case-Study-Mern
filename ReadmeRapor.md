@@ -1,4 +1,4 @@
-# DevOps / SRE Case Study
+<img width="2879" height="1717" alt="image" src="https://github.com/user-attachments/assets/b2098026-aced-43f5-959d-106f61b765d9" /># DevOps / SRE Case Study
 
 ## Project Overview
 
@@ -322,6 +322,22 @@ Bu repository içerisinde aşağıdaki sistem ekran görüntüleri paylaşılmı
   Public Access:
    `http://16.171.39.223:30080`
   <img width="2879" height="1617" alt="image" src="https://github.com/user-attachments/assets/55a933f2-6289-4efd-b1f7-8c68e26d60a3" />
+  
+  */create
+<img width="2879" height="1717" alt="image" src="https://github.com/user-attachments/assets/1c1e93f7-ed51-4022-aea5-94cb3e304b3a" />
+  /records
+  <img width="2869" height="1610" alt="image" src="https://github.com/user-attachments/assets/d9d614eb-3cd4-49e0-9181-a46d1f5c1122" />
+
+  */edit
+  <img width="2872" height="1718" alt="image" src="https://github.com/user-attachments/assets/87c08100-a362-4adf-9cd0-1e2134badfba" />
+*/delete
+  <img width="2879" height="1623" alt="image" src="https://github.com/user-attachments/assets/7116e204-a449-4541-abac-db5e37c078c6" />
+
+  
+  
+
+
+
 
   
 * Python ETL logs
