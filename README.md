@@ -1,7 +1,4 @@
-## GitHub Repository
 
-Repository Link:
-https://github.com/tahacansiz
 ## Project Overview
 
 Bu proje, AWS altyapısı üzerinde production ortamına benzer bir DevOps/SRE sistemi oluşturmak amacıyla geliştirilmiştir. Projenin temel amacı; modern DevOps teknolojileri ve altyapı yönetim yaklaşımları kullanılarak cloud-native bir uygulama mimarisinin kurulması, otomasyonu, orkestrasyonu ve izlenebilirliğinin sağlanmasıdır.
