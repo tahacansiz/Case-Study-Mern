@@ -1,0 +1,16 @@
+# Terraform dosyaları - Credentials ve state içerebilir
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+tfplan
+.tfvars
+
+# OS
+.DS_Store
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
