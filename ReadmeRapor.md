@@ -291,6 +291,11 @@ terraform apply
 Bu repository içerisinde aşağıdaki sistem ekran görüntüleri paylaşılmıştır:
 
 * GitHub Actions pipeline success
+* Mern-Project
+  <img width="2878" height="1570" alt="image" src="https://github.com/user-attachments/assets/016d22f1-2a0a-498e-8f95-c7839396d263" />
+* Python ETL
+  <img width="2877" height="1556" alt="image" src="https://github.com/user-attachments/assets/9a93b5d0-afce-4161-a73b-8f2aa096628d" />
+
 * Kubernetes pod list
 * Monitoring namespace
 * Grafana dashboard
